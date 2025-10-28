@@ -1,26 +1,38 @@
 #include<stdio.h>
+#include<time.h>
 int main(){
-	char arr[5][5];
-	int students=0,empty=0,i,j;
-	for(i=0;i<5;i++){
-		for(j=0;j<5;j++){
-			if((i+j)%2==0){
-				arr[i][j]='x';
-				students++;
-			}
-			else{
-				arr[i][j]='o';
-				empty++;			}
-		}
-	}
-	printf("Classroom Seating Chart:\n===========================\n(x = students , o= Empty)\n");
-	for(i=0;i<5;i++){
-		printf("Row %d ",i+1);
-		for(j=0;j<5;j++){
-			printf("%c",arr[i][j]);
+	int img[4][4]={
+	{1,0,1,0},
+	{0,1,0,1},
+	{1,1,0,0},
+	{0,0,1,1},
+	};
+	int i,j,white=0;
+	printf("-----------ORIGINAL IMAGE-----------\n");
+	    for(i=0;i<4;i++){
+		for(j=0;j<4;j++){
+			printf("%2d",img[i][j]);
 		}
 		printf("\n");
 	}
-	printf("\nSummary:\nStudents seated:%d\nEmpty desks :%d\nTotal desks :\n",students ,empty,25);
-	return 0;
+	printf("-----------INVERTED IMAGE-----------\n");
+		for(i=0;i<4;i++){
+		for(j=0;j<4;j++){
+			if(img[i][j]==1){
+				img[i][j]=0;
+				white++;
+			}
+			else{
+				img[i][j]=1;
+			}
+		}
+	}
+		for(i=0;i<4;i++){
+		for(j=0;j<4;j++){
+			printf("%2d",img[i][j]);
+		}
+		printf("\n");
+	}
+	printf("White Pixels in image =%d",white);		
+	
 }
